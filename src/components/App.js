@@ -28,13 +28,14 @@ const initialState = {
 }
 
 const calculateResult = (num1, num2, operation) => {
+      console.log(`num1: ${num1}, num2: ${num2}, oper: ${operation}`)
   switch(operation) {
     case("+"):
-    return num1 + num2;
+    return Number(num1) + Number(num2);
     case("*"):
-    return num1 * num2;
+    return Number(num1) * Number(num2);
     case("-"):
-    return num1 - num2;
+    return Number(num1) - Number(num2);
   }
 }
 const reducer = (state, action) => {
@@ -52,7 +53,7 @@ const reducer = (state, action) => {
     case MEMORY_APPLY:
       return ({
         ...state,
-        total:calculateResult(state.total, state.memory, state.operation)
+        total:calculateResult(state.total, state.memory, state.operators)
       })
     case MEMORY_ADD:
       return ({
